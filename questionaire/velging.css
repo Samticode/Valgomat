@@ -161,12 +161,13 @@ body {
     height: 70vh;
     width: 70vw;
 
-    border-radius: 1vmax;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
     z-index: 55;
+    
+    border-radius: 1vmax;
     background-color: rgba(241, 241, 241, 0.471);
     backdrop-filter: blur(10px);
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
@@ -205,7 +206,36 @@ body {
 }
 
 .aswerButtonDiv {
-    
+    font-family: 'Source Code Pro', monospace;
+}
+
+.btnNext, .btnBack {
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+
+    height: 50px;
+    width: 125px;
+    background-color: var(--background-color);
+    border-radius: 1vmax;
+    border: 1px solid rgb(0, 0, 0);
+
+    font-size: 1rem;
+}
+
+.btnNext:hover, .btnBack:hover {
+    background-color: rgb(193, 193, 193);
+}
+.btnNext:active, .btnBack:active {
+    transform: scale(0.95);
+}
+
+.btnNext {
+    top: 90%;
+    right: 5%;
+}
+.btnBack {
+    top: 90%;
+    left: 5%;
 }
 /* ---------------------------------------------------------------- */
 

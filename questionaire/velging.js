@@ -113,68 +113,74 @@ const questions = [
 
 
 btnNext.addEventListener('click', nextQuestion);
+btnBack.addEventListener('click', backQuestion);
 
 let qIndex = 0;
 questionT.innerHTML = questions[qIndex].question;
 
+let partyChoices = {};
 
-/* ---------------------------------------------------------------- */
+updateButtonVisibility();
+// ----------------------------------------------------------------------------------------
 
 
-function nextQuestion() {
+function updateButtonVisibility() {
   let radioChecked = document.querySelector('input[name="answer"]:checked');
-
-  if (radioChecked) {
-      calculateResult(qIndex, radioChecked.value);
-      qIndex++;
-
-      if (qIndex < questions.length) {
-          questionT.innerHTML = questions[qIndex].question;
-          radioChecked.checked = false;
-      } else {
-          displayResult();
-          scrollDisplay(radioChecked);
-      }
-  }
+    btnBack.style.display = (qIndex === 0) ? 'none' : 'inline-block';
+    radioChecked.checked = false;
 }
 
+function nextQuestion() {
+    let radioChecked = document.querySelector('input[name="answer"]:checked');
+
+    if (radioChecked) {
+        calculateResult(qIndex, radioChecked.value);
+        qIndex++;
+
+        if (qIndex < questions.length) {
+            questionT.innerHTML = questions[qIndex].question;
+            radioChecked.checked = false;
+        } else {
+            displayResult();
+        }
+    }
+    updateButtonVisibility();
+}
+
+function backQuestion() {
+    for (let party in partyChoices) {
+        partyScores[party] -= partyChoices[party];
+    }
+    qIndex--;
+    questionT.innerHTML = questions[qIndex].question;
+    console.log(partyScores)
+    updateButtonVisibility();
+}
+ 
 function calculateResult(qIndex, chosen) {
-  console.log(qIndex, chosen)
-  let partyChoices = questions[qIndex][chosen];
-  console.log(partyChoices);
-  for (let party in partyChoices) {
-      partyScores[party] += partyChoices[party];
-  }
-  console.log(partyScores)
+    console.log(qIndex, chosen)
+    partyChoices = questions[qIndex][chosen];
+    console.log(partyChoices);
+    for (let party in partyChoices) {
+        partyScores[party] += partyChoices[party];
+    }
+    console.log(partyScores)
 }
 
 function displayResult() {
-  let highestParties = [];
-  let highestScore = -Infinity;
+    let highestParties = [];
+    let highestScore = -Infinity;
 
-  for (let party in partyScores) {
-      if (partyScores[party] > highestScore) {
-          highestParties = [party];
-          highestScore = partyScores[party];
-      } else if (partyScores[party] === highestScore) {
-          highestParties.push(party);
-      }
-  }
+    for (let party in partyScores) {
+        if (partyScores[party] > highestScore) {
+            highestParties = [party];
+            highestScore = partyScores[party];
+        } else if (partyScores[party] === highestScore) {
+            highestParties.push(party);
+        }
+    }
 
-  if (highestParties.length > 0) {
-      resultT.innerHTML = `Du støtter mest: ${highestParties.join(', ')}`;
-  }
-}
-
-function scrollDisplay(button) {
-  const nextQuestion = button.closest('.panel').nextElementSibling;
-  nextQuestion.scrollIntoView({ behavior: "smooth" });
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
-
-
-/* ---------------------------------------------------------------- */
+    if (highestParties.length > 0) {
+        resultT.innerHTML = `Du støtter mest: ${highestParties.join(', ')}`;
+    }
+};
