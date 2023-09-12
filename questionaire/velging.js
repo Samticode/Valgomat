@@ -38,6 +38,7 @@ window.addEventListener("load", () => {
 
 const questionT = document.getElementById('question');
 const btnNext = document.getElementById('btnNext');
+const btnBack = document.getElementById('btnBack');
 const resultT = document.getElementById('result');
 
 
@@ -61,51 +62,51 @@ let partyScores = {
 
 
 const questions = [
-  {question: 'Spørsmål 1',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 1 1',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 2',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 3',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 4',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 5',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 6',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 5',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}},
-  {question: 'Spørsmål 3',
-      heltUenig: {mdg: 1, ap: 1, høyre:1},
-      littUenig: {mdg: 2, ap:2, høyre:2},
-      littEnig: {mdg: 3, ap: 3, høyre:3},
-      heltEnig: {mdg: 4, ap:4, høyre:4}}
+    {question: 'Spørsmål 1',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 2',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 3',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 4',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 5',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 6',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 7',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål 8',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}},
+    {question: 'Spørsmål siste',
+        heltUenig: {mdg: 1, ap: 1, høyre:1},
+        littUenig: {mdg: 2, ap:2, høyre:2},
+        littEnig: {mdg: 3, ap: 3, høyre:3},
+        heltEnig: {mdg: 4, ap:4, høyre:4}}
 ];
 
 
@@ -121,6 +122,8 @@ questionT.innerHTML = questions[qIndex].question;
 let partyChoices = {};
 
 updateButtonVisibility();
+
+
 // ----------------------------------------------------------------------------------------
 
 
@@ -142,6 +145,8 @@ function nextQuestion() {
             radioChecked.checked = false;
         } else {
             displayResult();
+            btnBack.style.display = 'none';
+            btnNext.style.display = 'none';
         }
     }
     updateButtonVisibility();
@@ -183,4 +188,11 @@ function displayResult() {
     if (highestParties.length > 0) {
         resultT.innerHTML = `Du støtter mest: ${highestParties.join(', ')}`;
     }
+
+    const nextScreen = btnNext.closest('.panel').nextElementSibling;
+    nextScreen.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
 };
