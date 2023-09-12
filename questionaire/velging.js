@@ -122,15 +122,18 @@ questionT.innerHTML = questions[qIndex].question;
 let partyChoices = {};
 
 updateButtonVisibility();
-
+console.log("test")
 
 // ----------------------------------------------------------------------------------------
 
 
 function updateButtonVisibility() {
-  let radioChecked = document.querySelector('input[name="answer"]:checked');
-    btnBack.style.display = (qIndex === 0) ? 'none' : 'inline-block';
-    radioChecked.checked = false;
+    if (qIndex === questions.length) {
+        btnBack.style.display = "none";
+        btnNext.style.display = "none";
+    } else {
+        btnBack.style.display = (qIndex === 0) ? 'none' : 'inline-block';
+    }
 }
 
 function nextQuestion() {
@@ -145,8 +148,6 @@ function nextQuestion() {
             radioChecked.checked = false;
         } else {
             displayResult();
-            btnBack.style.display = 'none';
-            btnNext.style.display = 'none';
         }
     }
     updateButtonVisibility();
@@ -163,7 +164,7 @@ function backQuestion() {
 }
  
 function calculateResult(qIndex, chosen) {
-    console.log(qIndex, chosen)
+    console.log(qIndex, chosen, questions.length)
     partyChoices = questions[qIndex][chosen];
     console.log(partyChoices);
     for (let party in partyChoices) {
