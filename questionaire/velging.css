@@ -17,14 +17,15 @@ body {
     margin: 0;
 }
 
+
 /* ---------------------------------------------------------------- */
+
 
 .backgroundDiv {
     height: 140vh;
     width: 180vw;  
     position: absolute;
 }
- 
 .tile {
     border-radius: 1vmax;
     position: absolute;
@@ -33,7 +34,6 @@ body {
 .tile:hover {
     transform: scale(1.05);
 }
-
 .tile:nth-child(1) {
     background-color: var(--yellow-color);
     height: 14%;
@@ -155,7 +155,25 @@ body {
     top: 80%;
 }
 
+
 /* ---------------------------------------------------------------- */
+
+
+.progressPercent {
+    position: absolute;
+    z-index: 100;
+    top: 3%;
+    left: 50%;
+    transform: translatex(-50%);
+
+    font-size: 1.25rem;
+    font-family: 'Source Code Pro', monospace;
+    color: var(--background-color);
+
+    background-color: black !important;
+    padding: 1em 2em;
+    border-radius: 3vmax;
+}
 
 .qaDiv {
     height: 70vh;
@@ -207,6 +225,12 @@ body {
 
 .aswerButtonDiv {
     font-family: 'Source Code Pro', monospace;
+    font-size: 1.5rem;
+}
+
+input {
+    transform: scale(1.6);
+    margin-left: 10px;
 }
 
 .btnNext, .btnBack {
@@ -225,6 +249,7 @@ body {
 .btnNext:hover, .btnBack:hover {
     background-color: rgb(193, 193, 193);
 }
+
 .btnNext:active, .btnBack:active {
     transform: scale(0.95);
 }
@@ -233,11 +258,15 @@ body {
     top: 90%;
     right: 5%;
 }
+
 .btnBack {
     top: 90%;
     left: 5%;
 }
+
+
 /* ---------------------------------------------------------------- */
+
 
 .transitionScreen {
     position: absolute;
@@ -247,4 +276,12 @@ body {
     height: 100vh;
     width: 100vw;
     transition: cubic-bezier(0.39, 0.575, 0.565, 1) 1s;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+
+@media screen and (max-width: 428px) {
+
 }

@@ -17,14 +17,15 @@ body {
     margin: 0;
 }
 
+
 /* ---------------------------------------------------------------- */
+
 
 .backgroundDiv {
     height: 140vh;
     width: 180vw;  
     position: absolute;
 }
- 
 .tile {
     border-radius: 1vmax;
     position: absolute;
@@ -33,7 +34,6 @@ body {
 .tile:hover {
     transform: scale(1.05);
 }
-
 .tile:nth-child(1) {
     background-color: var(--yellow-color);
     height: 14%;
@@ -154,6 +154,8 @@ body {
     left: 95%;
     top: 80%;
 }
+
+
 /* ---------------------------------------------------------------- */
 
 
@@ -167,39 +169,44 @@ body {
     transform: translate(-50%, -50%);
     position: absolute;
     z-index: 55;
+
     background-color: rgba(241, 241, 241, 0.471);
     backdrop-filter: blur(10px);
     box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
 }
+
 .title {
     font-family: 'Source Code Pro', monospace;
     font-size: 4rem;
     text-align: center;
 }
+
 .titleTop {
     margin-top: 0.5em;
 }
+
 .postScript {
-    margin: 4em auto 0;
+    margin: 1em auto;
     font-family: 'Source Code Pro', monospace;
     font-size: 1.25rem;
     font-weight: 400;
-    letter-spacing: 0.1px;
-    width: 70%;
+    width: 80%;
 }
+
 .gridDiv {
-    height: 35%;
     width: 100%;
     display: grid;
     place-items: center;
 }
+
 .preceedButton {
-    padding: 40px 70px;
+    padding: 20px 50px;
     font-family: 'Source Code Pro', monospace;
     font-size: 1.75rem;
     border-radius: 1vmax;
     border: none;
 }
+
 
 /* ---------------------------------------------------------------- */
 
@@ -213,4 +220,13 @@ body {
     width: 100vw;
     border-radius: 75% 75% 0 0;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.75s;
+}
+
+@media screen and (max-width: 428px) {
+    .title {
+        font-size: 2rem;
+    }
+    .postScript {
+        font-size: 0.75rem;
+    }
 }

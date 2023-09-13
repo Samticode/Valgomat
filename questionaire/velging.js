@@ -40,6 +40,7 @@ const questionT = document.getElementById('question');
 const btnNext = document.getElementById('btnNext');
 const btnBack = document.getElementById('btnBack');
 const resultT = document.getElementById('result');
+const progressPercent = document.getElementById('progressPercent');
 
 
 /* ---------------------------------------------------------------- */
@@ -62,47 +63,42 @@ let partyScores = {
 
 
 const questions = [
-    {question: 'Spørsmål 1',
+    {question: 'Bør vi ha lekser i skolen?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 2',
+    {question: 'Bør vi gi pengestøtte til kunstnere?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 3',
+    {question: 'Bør vi senke skattene?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 4',
+    {question: 'Bør vi finne nye oljefelt?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 5',
+    {question: 'Bør vi få flere private sykehus?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 6',
+    {question: 'Bør vi beholde kontantstøtten?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 7',
+    {question: 'Bør vi ta imot flere flyktninger?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
         heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål 8',
-        heltUenig: {mdg: 1, ap: 1, høyre:1},
-        littUenig: {mdg: 2, ap:2, høyre:2},
-        littEnig: {mdg: 3, ap: 3, høyre:3},
-        heltEnig: {mdg: 4, ap:4, høyre:4}},
-    {question: 'Spørsmål siste',
+    {question: 'Bør vi ha strengere straffer?',
         heltUenig: {mdg: 1, ap: 1, høyre:1},
         littUenig: {mdg: 2, ap:2, høyre:2},
         littEnig: {mdg: 3, ap: 3, høyre:3},
@@ -113,7 +109,7 @@ const questions = [
 /* ---------------------------------------------------------------- */
 
 
-btnNext.addEventListener('click', nextQuestion);
+btnNext.addEventListener('click', nextQuestionAndPercentage);
 btnBack.addEventListener('click', backQuestion);
 
 let qIndex = 0;
@@ -136,8 +132,9 @@ function updateButtonVisibility() {
     }
 }
 
-function nextQuestion() {
+function nextQuestionAndPercentage() {
     let radioChecked = document.querySelector('input[name="answer"]:checked');
+    let qPercent = (qIndex + 1) / questions.length * 100;
 
     if (radioChecked) {
         calculateResult(qIndex, radioChecked.value);
@@ -151,6 +148,8 @@ function nextQuestion() {
         }
     }
     updateButtonVisibility();
+    progressPercent.innerHTML = qPercent + '%';
+
 }
 
 function backQuestion() {
