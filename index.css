@@ -200,7 +200,7 @@ body {
 }
 
 .preceedButton {
-    padding: 20px 50px;
+    padding: 30px 60px;
     font-family: 'Source Code Pro', monospace;
     font-size: 1.75rem;
     border-radius: 1vmax;
@@ -228,5 +228,8 @@ body {
     }
     .postScript {
         font-size: 0.75rem;
+    }
+    .preceedButton {
+        padding: 20px 50px;
     }
 }

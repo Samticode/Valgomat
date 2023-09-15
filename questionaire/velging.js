@@ -39,8 +39,12 @@ window.addEventListener("load", () => {
 const questionT = document.getElementById('question');
 const btnNext = document.getElementById('btnNext');
 const btnBack = document.getElementById('btnBack');
-const resultT = document.getElementById('result');
 const progressPercent = document.getElementById('progressPercent');
+
+const firstPlace = document.getElementById('firstPlace');
+const secondPlace = document.getElementById('secondPlace');
+const thirdPlace = document.getElementById('thirdPlace');
+const fourthPlace = document.getElementById('fourthPlace');
 
 
 /* ---------------------------------------------------------------- */
@@ -56,6 +60,18 @@ let partyScores = {
   venstre : 0,
   høyre: 0,
   frp: 0
+};
+
+let partyPFP = {
+    rødt: "../pic/rodtPFP.png",
+    ap: "../pic/apPFP.jpg",
+    sv: "../pic/svPFP.png",
+    mdg: "../pic/mdgPFP.png",
+    sp: "../pic/spPFP.png",
+    krf: "../pic/krfPFP.png",
+    venstre: "../pic/venstrePFP.png",
+    høyre: "../pic/høyrePFP.png",
+    frp: "../pic/fprPFP.png"
 };
 
 
@@ -118,7 +134,7 @@ questionT.innerHTML = questions[qIndex].question;
 let partyChoices = {};
 
 updateButtonVisibility();
-console.log("test")
+
 
 // ----------------------------------------------------------------------------------------
 
@@ -132,9 +148,13 @@ function updateButtonVisibility() {
     }
 }
 
+function percentage() {
+    let qPercent = qIndex / questions.length * 100;
+    progressPercent.innerHTML = Math.round(qPercent) + '%';
+}
+
 function nextQuestionAndPercentage() {
     let radioChecked = document.querySelector('input[name="answer"]:checked');
-    let qPercent = (qIndex + 1) / questions.length * 100;
 
     if (radioChecked) {
         calculateResult(qIndex, radioChecked.value);
@@ -148,8 +168,7 @@ function nextQuestionAndPercentage() {
         }
     }
     updateButtonVisibility();
-    progressPercent.innerHTML = qPercent + '%';
-
+    percentage();
 }
 
 function backQuestion() {
@@ -160,6 +179,7 @@ function backQuestion() {
     questionT.innerHTML = questions[qIndex].question;
     console.log(partyScores)
     updateButtonVisibility();
+    percentage();
 }
  
 function calculateResult(qIndex, chosen) {
@@ -173,21 +193,27 @@ function calculateResult(qIndex, chosen) {
 }
 
 function displayResult() {
-    let highestParties = [];
-    let highestScore = -Infinity;
+    const partyScorePairs = Object.entries(partyScores);
 
-    for (let party in partyScores) {
-        if (partyScores[party] > highestScore) {
-            highestParties = [party];
-            highestScore = partyScores[party];
-        } else if (partyScores[party] === highestScore) {
-            highestParties.push(party);
-        }
-    }
+    // Sort the party-score pairs in descending order of scores
+    partyScorePairs.sort((a, b) => b[1] - a[1]);
 
-    if (highestParties.length > 0) {
-        resultT.innerHTML = `Du støtter mest: ${highestParties.join(', ')}`;
-    }
+    // Create an object to store the sorted results
+    const sortedResultsWithPFP = [];
+
+    // Populate the sorted results array with both party name, score, and pfp URL
+    partyScorePairs.forEach((pair, index) => {
+        const [party, score] = pair;
+        const pfpURL = partyPFP[party]; // Get the pfp URL for the party
+        sortedResultsWithPFP.push({ party, score, pfpURL });
+    });
+
+    console.log(sortedResultsWithPFP)
+    // Set background image
+    firstPlace.style.backgroundImage = `url(${sortedResultsWithPFP[0].pfpURL})`;
+    secondPlace.style.backgroundImage = `url(${sortedResultsWithPFP[1].pfpURL})`;
+    thirdPlace.style.backgroundImage = `url(${sortedResultsWithPFP[2].pfpURL})`;
+    fourthPlace.style.backgroundImage = `url(${sortedResultsWithPFP[3].pfpURL})`;
 
     const nextScreen = btnNext.closest('.panel').nextElementSibling;
     nextScreen.scrollIntoView({ behavior: 'smooth' });
