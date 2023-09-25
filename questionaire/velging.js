@@ -264,6 +264,7 @@ function makeLeaderboard() {
     let placeIdName = ["firstPlace", "secondPlace", "thirdPlace", "fourthPlace"]
     let medalIdName = ["medal medal1", "medal medal2", "medal medal3", "medal medal4"]
 
+    //Make top 4 on leaderboard
     for (var i = 0; i < 4; i++) {
         let newDiv = document.createElement("div");
         newDiv.setAttribute("class", placeIdName[i]);
