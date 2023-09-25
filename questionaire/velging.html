@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valgomat</title>
     <link rel="icon" href="../pic/norwegianFlag.png">
+    <!-- CSS -->
     <link rel="stylesheet" href="./velging.css">
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/7c2b5789de.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Background Tiles Container -->
     <div class="backgroundDiv" id="backgroundDiv">
+        <!-- Individual Tiles -->
         <div class="tile">
         </div>
         <div class="tile">
@@ -44,37 +49,39 @@
         <div class="tile">
         </div>
     </div>
+
+    <!-- Progress Percentage Display -->
     <div class="progressPercent" id="progressPercent">0%</div>
+
+    <!-- Questions and Answers Container -->
     <div class="qaDiv" id="qaDiv">
         <div class="scrollHiddenDiv" id="scrollHiddenDiv">
             <div class="scrollDiv">
+                <!-- Question Panel -->
                 <div class="panel">
                     <h2 class="question" id="question"></h2>
                     <div class="aswerButtonDiv">
+                        <!-- Radio Buttons for Answers -->
                         <input type="radio" name="answer"  value="heltUenig"> Helt uenig
                         <input type="radio" name="answer"  value="littUenig"> Litt uenig
                         <input type="radio" name="answer"  value=""> Nøytral
                         <input type="radio" name="answer"  value="littEnig"> Litt enig
                         <input type="radio" name="answer"  value="heltEnig"> Helt enig
+                        <!-- Next and Back Buttons -->
                         <button class="btnNext" id="btnNext" type="button">Neste spørsmål</button>
                         <button class="btnBack" id="btnBack" type="button">Tilbake</button>
                     </div>
                 </div>
-                <div class="endScreen">
-                    <div class="endScreenTop" id="firstPlace">
+                <div class="endScreen" id="endScreen">
 
-                    </div>
-                    <div class="endScreenBottom">
-                        <div class="secondPlace" id="secondPlace"></div>
-                        <div class="thirdPlace" id="thirdPlace"></div>
-                        <div class="fourthPlace" id="fourthPlace"></div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- Transition Screen -->
     <div class="transitionScreen" id="transitionScreen"></div>
+    
+     <!-- JavaScript -->
     <script src="./velging.js"></script>
 </body>
 </html>

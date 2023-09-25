@@ -270,36 +270,52 @@ input {
 
 .endScreen {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     place-items: center;
+    place-items: center;
 }
-
-.endScreenTop {
-    width: 30%;
+.endScreen > div {
     height: 100%;
-
-    background-color: #141419;
+    aspect-ratio: 1 / 1;
+    border-radius: 10vmax;
     background-position: center center;
     background-size: cover;
+    position: relative;
+}
+.firstPlace {
+    grid-column: 2;
+}
+.secondPlace {
+    grid-column: 1;
 }
 
-.endScreenBottom {
-    height: 100%;
-    width: 100%;
+.medal {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 30%;
+    aspect-ratio: 1 / 1;
+
+    border-radius: 7vmax;
+
+    font-size: 2rem;
+    font-family: 'Source Code Pro', monospace;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 5%;
+    place-items: center;
 }
-
-.endScreenBottom > div {
-    width: 100%;
-    height: 100%;
-background-color: #141419;
-    background-position: center center;
-    background-size: cover;
+.medal1 {
+    background-color: #f7cb78;
 }
-
-
+.medal2 {
+    background-color: #d4d4d4; 
+}
+.medal3 {
+    background-color: #85714b;
+}
+.medal4 {
+    background-color: #94c5f8;
+}
 /* ---------------------------------------------------------------- */
 
 
@@ -318,5 +334,33 @@ background-color: #141419;
 
 
 @media screen and (max-width: 428px) {
+    .qaDiv {
+        width: 90vw;
+        overflow: hidden;
+    }
+    .question {
+        font-size: 2.5rem;
+    }
+    .aswerButtonDiv {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+    }
 
+    .endScreen {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .endScreen > div {
+        width: 100%;
+    }
+    .firstPlace {
+        grid-column: 1;
+    }
+    .secondPlace {
+        grid-column: 2;
+    }
+    .medal {
+        height: 40%;
+    }
 }
