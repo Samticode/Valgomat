@@ -177,7 +177,7 @@ body {
 
 .title {
     font-family: 'Source Code Pro', monospace;
-    font-size: 4rem;
+    font-size: clamp(2rem, 4vw, 4.5rem);
     text-align: center;
 }
 
@@ -187,8 +187,9 @@ body {
 
 .postScript {
     margin: 1em auto;
+    text-align: center;
     font-family: 'Source Code Pro', monospace;
-    font-size: 1.25rem;
+    font-size: clamp(0.75rem, 1.125vw, 1.75rem);
     font-weight: 400;
     width: 80%;
 }
@@ -202,7 +203,7 @@ body {
 .preceedButton {
     padding: 30px 60px;
     font-family: 'Source Code Pro', monospace;
-    font-size: 1.75rem;
+    font-size: clamp(0.75rem, 2vw, 1.75rem);
     border-radius: 1vmax;
     border: none;
 }
